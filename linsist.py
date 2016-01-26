@@ -3,7 +3,7 @@
 Created on Fri Dec 18 15:52:18 2015
 
 @author: michy
-"""
+@description:
 
 # Simple function to solve linear systems
 #
@@ -17,6 +17,8 @@ Created on Fri Dec 18 15:52:18 2015
 #       Y: column vector of known terms
 #       A: coefficient matrix (squared non singular matrix)
 #       X: unknown terms vector
+
+"""
 
 import numpy as np
 
