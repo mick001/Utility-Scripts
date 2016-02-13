@@ -11,7 +11,7 @@ Created on Thu Feb  4 19:37:11 2016
 	------------------
 	1 + alpha * T * s
 	
-	Phase margin icrease has the following expression:
+	Phase margin increase has the following expression:
 	
 	arctan(1/sqrt(alpha)) - arctan(sqrt(alpha))
 	
