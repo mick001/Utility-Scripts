@@ -16,4 +16,4 @@ In general: simply copy and paste the script in your favourite IDE (or in a .py 
 Check the description of each script for more information.
 
 ## License
-See the license.txt file (GPL 3).
+See the license.txt file (GPL 3.0).
