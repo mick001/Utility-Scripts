@@ -5,35 +5,48 @@ Created on Sun Jan 24 21:02:49 2016
 @author: Michy
 @name: Quick .csv plot
 @description: Plot a csv as quickly as possible from cmd line
-@example: example of use from terminal (or cmd): python .\plot_csv.py file1.csv
-@note: Remember to set path before running or comment path out and pass it as an argument
+@example: example of use from terminal (or cmd): python plot_csv.py file1.csv x y
+@notes:
+    1. Default path is current working directory
+    2. Default file encoding is utf-16
+    3. By default header parameter in pd.read_csv is set to 0. Note that the
+    .csv may have an arbitrary number of columns (variables).
 
 """
-
-# Default path for Windows. Comment out if you do not need it.
-path = "C://"
 
 import sys
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-# Remember to add .csv extension
+# Default path is cwd. Comment out if you don't need it.
+path = os.getcwd()
+
+# Remember to add .csv extension to the file name.
 fileName = sys.argv[1]
+# x label name
+x_ = sys.argv[2]
+# y label name
+y_ = sys.argv[3]
 
-# Print name of file plotted
-print(""" 
+# Print name of file plotted and other info
+print("""
 
-Plotting %s
+Plotting %s \n
+variables plotted:
+x \t %s
+y \t %s
 
-""" %(fileName))
+""" % (fileName, x_, y_))
 
 # Plot file
 try:
-	path = path + fileName
-	y = pd.read_csv(path)
-	plt.plot(range(len(y)), y)
-	plt.show()
+    df = pd.read_csv(fileName, header = 0, encoding = "utf-16")
+    x = df[x_]
+    y = df[y_]
+    plt.plot(x, y)
+    plt.show()
 except Exception as e:
-	print("Exception triggered:")
-	print(str(e))
-	print("\n")
+    print("Exception triggered:")
+    print(str(e))
+    print("\n")
