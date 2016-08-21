@@ -3,17 +3,16 @@
 Created on Tue Jan 26 23:14:19 2016
 
 @author: Michy
+@name: Threephase unbalanced circuit solver
 
-Threephase unbalanced circuit solver
-
-### Description ###
-This short snippet of code is aimed at solving canonical threephase circuits.
-It is useful for doing a quick check if calculating everything by hand.
-
-Note that a mutual inductor can be included in the circuit. The mutual
-inductor is taken into account by transformating it in the equivalent Y circuit.
-If you do not wish to include a mutual inductor in the simulation just set to
-0 self and  mutual inductances (l11,l22 and lm)
+@description:
+    This short snippet of code is aimed at solving canonical threephase circuits.
+    It is useful for doing a quick double check if you are solving the circuit using pen and paper.
+    
+    Note that a mutual inductor can be included in the circuit. The mutual
+    inductor is taken into account by transformating it in the equivalent Y circuit.
+    If you do not wish to include a mutual inductor in the simulation just set to
+    0 self and  mutual inductances (l11, l22 and lm)
 
 """
 
