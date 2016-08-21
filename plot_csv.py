@@ -5,12 +5,13 @@ Created on Sun Jan 24 21:02:49 2016
 @author: Michy
 @name: Quick .csv plot
 @description: Plot a csv as quickly as possible from cmd line
-@example of cmd line command: python .\plot_csv.py file1.csv
+@example: example of use from terminal (or cmd): python .\plot_csv.py file1.csv
 @note: Remember to set path before running or comment path out and pass it as an argument
 
 """
 
-path = "C://users//michy//desktop//"
+# Default path for Windows. Comment out if you do not need it.
+path = "C://"
 
 import sys
 import pandas as pd
@@ -30,7 +31,7 @@ Plotting %s
 try:
 	path = path + fileName
 	y = pd.read_csv(path)
-	plt.plot(range(len(y)),y)
+	plt.plot(range(len(y)), y)
 	plt.show()
 except Exception as e:
 	print("Exception triggered:")
