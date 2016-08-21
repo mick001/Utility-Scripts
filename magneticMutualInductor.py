@@ -3,10 +3,15 @@
 Created on Tue Feb  2 01:40:51 2016
 
 @author: Michy
+@description:
+    Given a two sided magnetic circuit, this script calculates the parameters of the mutual inductor
+    The mutual inductor is assumed to be connected in series with a current source. The structure of the mutual inductor
+    is assumed to have three iron cores and a set of windings on each of the external cores.
+    You just need to provide the number of turns of each coil and the reluctances of each core of the structure.
 
-Given a two sided magnetic circuit, calculate the mutual inductor 
-parameters. The mutual inductor is assumed to be connected in series
-with a current source.
+    This script was written to double check some exercises in a course of electrical circuits.
+
+@example: run the script.
 
 """
 
@@ -17,8 +22,8 @@ r1 = 3*10**6/(4*np.pi)
 r2 = 10**6/(2*np.pi)
 r3 = 10**6/(4*np.pi)
 
-# Windings
-N1 =100
+# Number of turns (windings)
+N1 = 100
 N2 = 200
 
 # Magnetic permeances
