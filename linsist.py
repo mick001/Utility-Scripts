@@ -39,3 +39,8 @@ def solveSystem(y,A):
         else:
             raise ValueError("Number of columns of A must be equal to the number of rows of y!")
 
+if __name__ == '__main__':
+    A = np.matrix('1 2; 3 4')
+    y = np.matrix('2; 4')
+    print(solveSystem(y,A))
+    
