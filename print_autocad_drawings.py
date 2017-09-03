@@ -6,9 +6,9 @@ Created on Sun Sep  3 17:20:04 2017
 @name: AutoCAD drawing printer BOT. 
 @description:
     
-    This program is a BOT that prints all the .dwg files in a given folder.
-    Given a folder (data_wd) the program will try to print every .dwg file in 
-    that folder.
+    This program is a BOT that prints to pdf all the .dwg files in a given folder.
+    Given a folder (data_wd) the program will try to print every .dwg file in that
+    folder.
     
     IMPORTANT NOTE: This program works assuming that your AutoCAD installation is
     configured as mine. Which is a very bold assumption. The program works in the
@@ -25,6 +25,16 @@ Created on Sun Sep  3 17:20:04 2017
     Please make sure that this procedure applies to your machine as well. Otherwise
     make custom adjustments to the Pyautogui procedure as needed.
     
+    The program outputs a log in a file named logfile.log (how original!). Example of
+    a log file output is given below:
+
+	INFO:DWG Printer bot V. 1.0:Program ran at 2017-09-03 21:35:09. Directory chosen: C:\Users\Michy\Desktop\autocad_tutorial
+	INFO:DWG Printer bot V. 1.0:Printed Drawing2.dwg
+	INFO:DWG Printer bot V. 1.0:Printed Drawing2_1.dwg
+	INFO:DWG Printer bot V. 1.0:Printed Drawing3.dwg
+	INFO:DWG Printer bot V. 1.0:Printed Drawing3_1.dwg
+	INFO:DWG Printer bot V. 1.0:Program ended at 2017-09-03 21:36:14
+
 @examples:
 	Example and more details will be provided soon at www.firsttimeprogrammer.blogspot.com
 
