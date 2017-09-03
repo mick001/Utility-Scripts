@@ -10,6 +10,7 @@ May be they'll be useful to someone, maybe they won't. Who knows, at least they'
 - A script to calculate the increase in phase margin of a linear system due to a lead network.
 - A script to solve linear systems.
 - A script to solve threephase balanced radial electrical lines.
+- A script to automatically print .dwg drawings from\ AutoCAD
 
 ## How to run the scripts
 In general: simply copy and paste the script in your favourite IDE (or in a .py file) and run it. Some scripts may run from command line. 
