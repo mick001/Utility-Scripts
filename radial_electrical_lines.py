@@ -162,73 +162,75 @@ class transmission_line(object):
 #-------------------------------------------------------------------------------
 # Example of application
 
-# Loads
-c1 = electric_load(pf=0.90, Vn=15000, P=1000000)
-c2 = electric_load(pf=0.90, Vn=15000, S=1000000)
-c3 = electric_load(pf=0.95, Vn=15000, S=2000000)
+if __name__ == '__main__':
+	
+	# Loads
+	c1 = electric_load(pf=0.90, Vn=15000, P=1000000)
+	c2 = electric_load(pf=0.90, Vn=15000, S=1000000)
+	c3 = electric_load(pf=0.95, Vn=15000, S=2000000)
 
-# Transmission lines
-tl_2 = transmission_line(R=0.1, X=0.1, L=10)
-tl_1 = transmission_line(R=0.1, X=0.1, L=5)
+	# Transmission lines
+	tl_2 = transmission_line(R=0.1, X=0.1, L=10)
+	tl_1 = transmission_line(R=0.1, X=0.1, L=5)
 
-# Transformers
-T_1 = transformer(V1n=132000, V2n=15000, Sn=25000000, vcc_pc=12.5)
+	# Transformers
+	T_1 = transformer(V1n=132000, V2n=15000, Sn=25000000, vcc_pc=12.5)
 
-# Solve transmission line
-Va, Ia, Pa, Qa = c1.get_electric_load()
-Vb, Ib, Pb, Qb = tl_2.same_current(Pa, Qa, Ia)
-Vb, Ib, Pb, Qb = c2.add_load_in_parallel(Pb, Qb, Vb)
-Vb, Ib, Pb, Qb = c3.add_load_in_parallel(Pb, Qb, Vb)
-Vc, Ic, Pc, Qc = tl_1.same_current(Pb, Qb, Ib)
-Vd, Id, Pd, Qd = T_1.primary_values(Pc, Qc, Ic)
+	# Solve transmission line
+	Va, Ia, Pa, Qa = c1.get_electric_load()
+	Vb, Ib, Pb, Qb = tl_2.same_current(Pa, Qa, Ia)
+	Vb, Ib, Pb, Qb = c2.add_load_in_parallel(Pb, Qb, Vb)
+	Vb, Ib, Pb, Qb = c3.add_load_in_parallel(Pb, Qb, Vb)
+	Vc, Ic, Pc, Qc = tl_1.same_current(Pb, Qb, Ib)
+	Vd, Id, Pd, Qd = T_1.primary_values(Pc, Qc, Ic)
 
-# Get ready for printing out results
-sections = ["a", "b", "c", "d"]
-V = round_([Va, Vb, Vc, Vd], 2)
-I = round_([Ia, Ib, Ic, Id], 2)
+	# Get ready for printing out results
+	sections = ["a", "b", "c", "d"]
+	V = round_([Va, Vb, Vc, Vd], 2)
+	I = round_([Ia, Ib, Ic, Id], 2)
 
-dV_ = ["Vdc", "Vcb", "Vba"]
-dV = [Vd/132000 - Vc/15000, Vc/15000 - Vb/15000, Vb/15000 - Va/15000]
-dV = [i * 100 for i in dV]
+	dV_ = ["Vdc", "Vcb", "Vba"]
+	dV = [Vd/132000 - Vc/15000, Vc/15000 - Vb/15000, Vb/15000 - Va/15000]
+	dV = [i * 100 for i in dV]
 
-# Print results
-print("Section", "\tVoltage [kV]", "\tCurrent [A]")
-for i,k in enumerate(sections):
-    print(str(k), "\t\t" + str(round(V[i]/1000, 2)), "\t\t" + str(I[i]))
+	# Print results
+	print("Section", "\tVoltage [kV]", "\tCurrent [A]")
+	for i,k in enumerate(sections):
+		print(str(k), "\t\t" + str(round(V[i]/1000, 2)), "\t\t" + str(I[i]))
 
-print("\nVoltage drop:")
-for i,k in enumerate(dV_):
-    print(str(k), "\t" + str(round(dV[i], 2)) + "%")
+	print("\nVoltage drop:")
+	for i,k in enumerate(dV_):
+		print(str(k), "\t" + str(round(dV[i], 2)) + "%")
 
-#-------------------------------------------------------------------------------
-# Plot
-plt.figure()
-plt.subplot(3,1,1)
-plt.plot(I)
-plt.title("Current [A]")
-plt.xticks(range(len(sections)), sections, size='small')
-plt.subplot(3,1,2)
-plt.plot(V/1000)
-plt.xticks(range(len(sections)), sections, size='small')
-plt.title("Voltage [kV]")
-plt.subplot(3,1,3)
-plt.plot(dV)
-plt.xticks(range(len(dV_)), dV_, size='small')
-plt.title("Voltage drop %")
-plt.show()
+	#-------------------------------------------------------------------------------
+	# Plot
+	plt.figure()
+	plt.subplot(3,1,1)
+	plt.plot(I)
+	plt.title("Current [A]")
+	plt.xticks(range(len(sections)), sections, size='small')
+	plt.subplot(3,1,2)
+	plt.plot(V/1000)
+	plt.xticks(range(len(sections)), sections, size='small')
+	plt.title("Voltage [kV]")
+	plt.subplot(3,1,3)
+	plt.plot(dV)
+	plt.xticks(range(len(dV_)), dV_, size='small')
+	plt.title("Voltage drop %")
+	plt.show()
 
-################################################################################
-#                       OUTPUT
-################################################################################
-#
-#Section 	Voltage [kV] 	Current [A]
-#a 		15.0 		42.77
-#b 		15.1 		157.12
-#c 		15.28 		157.12
-#d 		135.48 		17.85
-#
-#Voltage drop:
-#Vdc 	0.8%
-#Vcb 	1.18%
-#Vba 	0.66%
-#>>> 
+	################################################################################
+	#                       OUTPUT
+	################################################################################
+	#
+	#Section 	Voltage [kV] 	Current [A]
+	#a 		15.0 		42.77
+	#b 		15.1 		157.12
+	#c 		15.28 		157.12
+	#d 		135.48 		17.85
+	#
+	#Voltage drop:
+	#Vdc 	0.8%
+	#Vcb 	1.18%
+	#Vba 	0.66%
+	#>>> 
